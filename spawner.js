@@ -3,7 +3,7 @@ export default class Spawner {
     this.create = create;
 
     const spawnInterval = 1000; //milliseconds
-    this.maxSpawns = 30;
+    this.maxSpawns = 3;
     this.spawns = [];
     setInterval(() => this.spawn(), spawnInterval);
   }
