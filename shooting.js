@@ -51,11 +51,11 @@ export default class Shooting {
     }
   }
 
-  update() {
+  update(delta) {
     this.bullets.forEach((bullet) =>
       bullet.position.set(
-        bullet.position.x + bullet.velocity.x,
-        bullet.position.y + bullet.velocity.y
+        bullet.position.x + bullet.velocity.x * delta,
+        bullet.position.y + bullet.velocity.y * delta
       )
     );
   }

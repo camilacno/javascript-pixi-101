@@ -53,7 +53,7 @@ export default class Player {
     return this.player.width;
   }
 
-  update() {
+  update(delta) {
     if (this.dead) return;
     const mouse = this.app.renderer.plugins.interaction.mouse;
     const cursorPosition = mouse.global;
@@ -70,6 +70,6 @@ export default class Player {
       this.lastMouseButton = mouse.buttons;
     }
 
-    this.shooting.update();
+    this.shooting.update(delta);
   }
 }

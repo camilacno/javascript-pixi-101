@@ -24,8 +24,8 @@ app.ticker.add((delta) => {
   gameStartScene.visible = !app.gameStarted;
   if (app.gameStarted === false) return;
 
-  player.update();
-  zSpawner.spawns.forEach((zombie) => zombie.update());
+  player.update(delta);
+  zSpawner.spawns.forEach((zombie) => zombie.update(delta));
   bulletHit({
     bullets: player.shooting.bullets,
     zombies: zSpawner.spawns,

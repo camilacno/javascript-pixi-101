@@ -31,7 +31,7 @@ export default class Zombie {
     }, 500);
   }
 
-  update() {
+  update(delta) {
     let zombiePosition = new Victor(
       this.zombie.position.x,
       this.zombie.position.y
@@ -46,7 +46,7 @@ export default class Zombie {
     }
 
     let distance = playerPosition.subtract(zombiePosition);
-    let velocity = distance.normalize().multiplyScalar(this.speed);
+    let velocity = distance.normalize().multiplyScalar(this.speed * delta);
     this.zombie.position.set(
       this.zombie.position.x + velocity.x,
       this.zombie.position.y + velocity.y
