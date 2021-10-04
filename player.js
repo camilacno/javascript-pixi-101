@@ -36,11 +36,11 @@ export default class Player {
   }
 
   attack() {
-    this.health -= 1;
+    this.currentHealth -= 1;
     this.healthBar.width =
-      (this.health / this.maxHealth) * this.healthBar.initialWidth;
+      (this.currentHealth / this.maxHealth) * this.healthBar.initialWidth;
 
-    if (this.health <= 0) {
+    if (this.currentHealth <= 0) {
       this.dead = true;
     }
   }

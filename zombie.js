@@ -20,7 +20,20 @@ export default class Zombie {
   }
 
   get position() {
-    return;
+    return this.zombie.position;
+  }
+
+  attackPlayer() {
+    if (this.attacking) return;
+    this.attacking = true;
+    this.interval = setInterval(() => {
+      this.player.attack();
+    }, 500);
+  }
+
+  kill() {
+    this.app.stage.removeChild(this.zombie);
+    clearInterval(this.interval);
   }
 
   update() {
@@ -33,8 +46,7 @@ export default class Zombie {
       this.player.position.y
     );
     if (zombiePosition.distance(playerPosition) < this.player.width / 2) {
-      let restartPoint = this.randomSpawnPoint();
-      this.zombie.position.set(restartPoint.x, restartPoint.y);
+      this.attackPlayer();
       return;
     }
 
@@ -44,14 +56,6 @@ export default class Zombie {
       this.zombie.position.x + velocity.x,
       this.zombie.position.y + velocity.y
     );
-  }
-
-  kill() {
-    this.app.stage.removeChild(this.zombie);
-  }
-
-  get position() {
-    return this.zombie.position;
   }
 
   randomSpawnPoint() {
