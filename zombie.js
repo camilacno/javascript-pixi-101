@@ -19,6 +19,10 @@ export default class Zombie {
     app.stage.addChild(this.zombie);
   }
 
+  get position() {
+    return;
+  }
+
   update() {
     let zombiePosition = new Victor(
       this.zombie.position.x,
@@ -40,6 +44,14 @@ export default class Zombie {
       this.zombie.position.x + velocity.x,
       this.zombie.position.y + velocity.y
     );
+  }
+
+  kill() {
+    this.app.stage.removeChild(this.zombie);
+  }
+
+  get position() {
+    return this.zombie.position;
   }
 
   randomSpawnPoint() {
